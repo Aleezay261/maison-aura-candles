@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout &amp; Order — Maison Aura Haute Parfumerie</title>
+  <meta name="description" content="Complete your bespoke luxury candle order with Maison Aura. Complimentary gift packaging, secure checkout, and artisanal delivery across Pakistan.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23292A25'/><text x='50' y='64' font-family='serif' font-size='44' font-weight='600' fill='%23F7F3EC' text-anchor='middle'>MA</text></svg>">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    Complimentary artisanal matches &amp; luxury gift packaging on orders over <span>Rs. 8,000</span>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand-logo" aria-label="Maison Aura Home">
+        <span class="brand-title">MAISON AURA</span>
+        <span class="brand-subtitle">Haute Parfumerie pour la Maison</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Main Navigation">
+        <ul class="desktop-nav">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Collection</a></li>
+          <li><a href="order.html" class="nav-link active">Order / Cart</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="cart-toggle-btn" aria-label="Open Cart Basket">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Basket</span>
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-panel" id="mobileNavPanel">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">The Collection</a></li>
+      <li><a href="order.html" class="active">Checkout &amp; Order</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+      <p style="font-size: 0.8rem; color: var(--color-charcoal-muted);">Atelier Paris &bull; Grasse</p>
+      <p style="font-size: 0.75rem; color: var(--color-mocha); margin-top: 0.3rem;">concierge@maisonaura.com</p>
+    </div>
+  </div>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title" id="cartDrawerTitle">Your Sanctuary Basket</h3>
+      <button class="cart-drawer-close" id="cartDrawerClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <!-- Injected via JavaScript -->
+    </div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Header Banner -->
+    <section class="section-padding-sm" style="background-color: var(--color-ivory-light); border-bottom: 1px solid var(--color-border); text-align: center;">
+      <div class="container">
+        <span class="eyebrow"><span class="eyebrow-pip"></span> Checkout &amp; Reservation</span>
+        <h1 style="margin-bottom: 0.75rem;">Your Scent Sanctuary</h1>
+        <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">
+          Review your botanical wax selections, enter your delivery particulars, and finalize your bespoke candle dispatch.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Checkout Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="checkout-grid">
+
+          <!-- Left Column: Customer Details & Order Form -->
+          <div>
+            <form id="checkoutForm" novalidate>
+              
+              <!-- 1. Customer Contact Details -->
+              <div class="checkout-card">
+                <h3 class="checkout-card-title">
+                  <span class="checkout-step-num">1</span>
+                  Customer Information
+                </h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="custName">Customer Full Name <span class="req">*</span></label>
+                    <input type="text" id="custName" class="form-control" placeholder="e.g. Zoya Siddiqui" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="custPhone">Phone Number <span class="req">*</span></label>
+                    <input type="tel" id="custPhone" class="form-control" placeholder="e.g. 0300-1234567" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="custEmail">Email Address (Optional)</label>
+                  <input type="email" id="custEmail" class="form-control" placeholder="e.g. zoya.siddiqui@example.com">
+                  <small style="font-size: 0.74rem; color: var(--color-charcoal-muted); margin-top: 0.35rem;">
+                    For digital dispatch receipts and order tracking updates.
+                  </small>
+                </div>
+              </div>
+
+              <!-- 2. Delivery Address -->
+              <div class="checkout-card">
+                <h3 class="checkout-card-title">
+                  <span class="checkout-step-num">2</span>
+                  Delivery Address
+                </h3>
+
+                <div class="form-group">
+                  <label for="custAddress">Complete Street Address <span class="req">*</span></label>
+                  <textarea id="custAddress" class="form-control" placeholder="House/Apartment #, Street, Block/Phase, City..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="custCity">City</label>
+                    <input type="text" id="custCity" class="form-control" placeholder="e.g. Lahore / Karachi / Islamabad" value="Lahore">
+                  </div>
+                  <div class="form-group">
+                    <label for="custPostal">Postal Code</label>
+                    <input type="text" id="custPostal" class="form-control" placeholder="e.g. 54000" value="54000">
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Shipping Method -->
+              <div class="checkout-card">
+                <h3 class="checkout-card-title">
+                  <span class="checkout-step-num">3</span>
+                  Shipping Preference
+                </h3>
+
+                <div class="option-select-grid">
+                  <label class="option-select-card active">
+                    <input type="radio" name="shipping_method" value="standard" checked>
+                    <div>
+                      <span class="option-title">Standard Courier Delivery</span>
+                      <span class="option-subtitle">2–4 Business Days &bull; Secure Cushioning</span>
+                      <span class="option-price">Complimentary over Rs. 8,000 (Rs. 350 under)</span>
+                    </div>
+                  </label>
+
+                  <label class="option-select-card">
+                    <input type="radio" name="shipping_method" value="express">
+                    <div>
+                      <span class="option-title">Express Priority Delivery</span>
+                      <span class="option-subtitle">1–2 Business Days &bull; Fragile Care</span>
+                      <span class="option-price">Rs. 800</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 4. Payment Preference -->
+              <div class="checkout-card">
+                <h3 class="checkout-card-title">
+                  <span class="checkout-step-num">4</span>
+                  Payment Preference
+                </h3>
+
+                <div class="option-select-grid">
+                  <label class="option-select-card active">
+                    <input type="radio" name="payment_method" value="Cash on Delivery (COD)" checked>
+                    <div>
+                      <span class="option-title">Cash on Delivery (COD)</span>
+                      <span class="option-subtitle">Pay cash upon parcel delivery</span>
+                    </div>
+                  </label>
+
+                  <label class="option-select-card">
+                    <input type="radio" name="payment_method" value="Direct Bank Transfer / Raast">
+                    <div>
+                      <span class="option-title">Direct Bank Transfer / Raast</span>
+                      <span class="option-subtitle">Instant online account transfer</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 5. Gift Note (Minimalist SVG, No Emoji) -->
+              <div class="checkout-card">
+                <h3 class="checkout-card-title">
+                  <span class="checkout-step-num">5</span>
+                  Gift Inscription &amp; Special Instructions
+                </h3>
+
+                <div class="form-group">
+                  <label for="custGiftNote">Complimentary Calligraphy Inscription (Optional)</label>
+                  <textarea id="custGiftNote" class="form-control" placeholder="Write a note to be hand-inscribed on our luxury deckle-edge cardstock..."></textarea>
+                </div>
+
+                <div style="font-size: 0.8rem; color: var(--color-charcoal-muted); display: flex; align-items: center; gap: 0.6rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                    <rect x="2" y="7" width="20" height="5"></rect>
+                    <line x1="12" y1="22" x2="12" y2="7"></line>
+                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                  </svg>
+                  <span>Every candle order arrives in a signature gift box with safety matches and candle care instructions.</span>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div style="margin-top: 1.5rem;">
+                <button type="submit" id="orderSubmitBtn" class="btn btn-primary btn-block" style="padding: 1.1rem; font-size: 0.95rem;">
+                  Confirm &amp; Place Order
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Right Column: Live Order Summary -->
+          <div>
+            <div class="order-summary-sidebar">
+              <h3 class="order-summary-title">Order Summary</h3>
+
+              <!-- Cart Review Items List -->
+              <div id="orderReviewContainer">
+                <!-- Dynamically rendered via script.js -->
+              </div>
+
+              <!-- Promo Code Input -->
+              <div style="margin-top: 1.5rem;">
+                <div class="coupon-box">
+                  <input type="text" id="promoCodeInput" placeholder="Promo code (e.g. AURA10)" aria-label="Promo code">
+                  <button type="button" id="promoApplyBtn" class="btn btn-secondary btn-sm">Apply</button>
+                </div>
+                <div id="promoStatusMsg" class="coupon-status-msg"></div>
+              </div>
+
+              <!-- Price Breakdown in Rs. -->
+              <div class="price-breakdown">
+                <div class="price-line">
+                  <span>Subtotal</span>
+                  <span id="summarySubtotal">Rs. 0</span>
+                </div>
+                <div class="price-line" id="summaryDiscountRow" style="display: none; color: var(--color-success);">
+                  <span>Club Atelier Discount (10%)</span>
+                  <span id="summaryDiscount">-Rs. 0</span>
+                </div>
+                <div class="price-line">
+                  <span>Delivery Fee</span>
+                  <span id="summaryShipping">Rs. 0</span>
+                </div>
+                <div class="price-line total-line">
+                  <span>Grand Total</span>
+                  <span id="summaryGrandTotal">Rs. 0</span>
+                </div>
+              </div>
+
+              <!-- Trust Points (Clean Minimalist SVG Icons) -->
+              <div style="font-size: 0.78rem; color: var(--color-charcoal-muted); display: flex; flex-direction: column; gap: 0.65rem; border-top: 1px solid var(--color-border); padding-top: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                  </svg>
+                  <span>100% Botanical Soy &amp; Coconut Wax</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                  </svg>
+                  <span>Signature Gift Box &amp; Matchbox Included</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  <span>30-Day Olfactory Happiness Guarantee</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Order Confirmation Modal -->
+  <div class="modal-overlay" id="orderConfirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmationModalTitle">
+    <div class="modal-content" style="max-width: 650px;">
+      <button class="modal-close-btn" onclick="closeConfirmationModal()" aria-label="Close modal">&times;</button>
+      <div id="confirmationContent">
+        <!-- Injected via JavaScript upon valid form submit -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-title">MAISON AURA</span>
+          <span class="brand-subtitle">Haute Parfumerie &bull; Grasse</span>
+          <p class="footer-desc">
+            Artisanal scented candles crafted with clean botanical wax and Grasse perfume concentrates. Dedicated to the slow beauty of home fragrance.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>The Atelier</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Our Story</a></li>
+            <li><a href="products.html">All Candle Scents</a></li>
+            <li><a href="products.html">Olfactory Pyramid</a></li>
+            <li><a href="order.html">Gift Cards &amp; Boxes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Client Concierge</h5>
+          <ul class="footer-links">
+            <li><a href="order.html">Track Order</a></li>
+            <li><a href="order.html">Shipping &amp; Delivery</a></li>
+            <li><a href="index.html">Candle Care Guide</a></li>
+            <li><a href="order.html">Corporate Gifting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:concierge@maisonaura.com">concierge@maisonaura.com</a></li>
+            <li><a href="#">Instagram @maisonaura</a></li>
+            <li><a href="#">Atelier Grasse, France</a></li>
+            <li><a href="#">Boutique Paris VII</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Maison Aura Haute Parfumerie. All rights reserved. Handcrafted with botanical waxes.</div>
+        <div class="footer-payment-icons">
+          <span class="payment-tag">Visa</span>
+          <span class="payment-tag">MasterCard</span>
+          <span class="payment-tag">Apple Pay</span>
+          <span class="payment-tag">Google Pay</span>
+          <span class="payment-tag">Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
