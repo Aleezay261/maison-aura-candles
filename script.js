@@ -1,19 +1,3 @@
-/**
- * MAISON AURA — LUXURY SCENTED CANDLES
- * Vanilla JavaScript E-Commerce Engine
- * Features:
- * - Product Catalog in PKR (Rs.)
- * - LocalStorage cart persistence across all pages
- * - Slide-out Cart Drawer & dynamic counter badges
- * - Quick View Modal & Scent pyramid
- * - Real-time filtering, search, and sorting
- * - Order Form validation & Confirmation Modal
- * - Zero Emojis: Professional Minimalist SVG Icons
- */
-
-// ==========================================================================
-// 1. PRODUCT CATALOG DATA (Prices in PKR, Real Candle Photos in images/)
-// ==========================================================================
 const PRODUCTS = [
   {
     id: 'candle-amber',
@@ -26,7 +10,7 @@ const PRODUCTS = [
     burnTime: '60 Hours',
     weight: '280g / 9.8 oz',
     badge: 'Best Seller',
-    image: 'images/candle-amber.jpg',
+    image: 'image/candle-amber.png',
     topNotes: 'Italian Bergamot, Cistus Labdanum',
     heartNotes: 'Smoked Sandalwood, Cedar Embers',
     baseNotes: 'Golden Amber Resin, Bourbon Vanilla',
@@ -43,7 +27,7 @@ const PRODUCTS = [
     burnTime: '65 Hours',
     weight: '300g / 10.5 oz',
     badge: 'Signature',
-    image: 'images/candle-santal.jpg',
+    image: 'image/candle-santal.png',
     topNotes: 'Green Cardamom, Violet Leaves',
     heartNotes: 'Australian Sandalwood, Papyrus Reed',
     baseNotes: 'Ambergris, White Leather, Cedar',
@@ -60,66 +44,15 @@ const PRODUCTS = [
     burnTime: '55 Hours',
     weight: '260g / 9.1 oz',
     badge: "Editor's Pick",
-    image: 'images/candle-fig.jpg',
+    image: 'image/candle-fig.png',
     topNotes: 'Crushed Fig Leaves, Bitter Orange',
     heartNotes: 'Ripe Black Fig, Coconut Milk',
     baseNotes: 'White Cedarwood, Sunlit Earth',
     description: 'Transport yourself to sun-warmed Mediterranean groves where wild fig leaves rustle under coastal breezes. Green, milky, and effortlessly vibrant.'
   },
   {
-    id: 'candle-orange',
-    name: 'No. 04 — Fleur d’Oranger',
-    frenchTitle: 'Fleur d’Oranger • Jardin Solaire',
-    scents: 'Tunisian Neroli, Orange Blossom, Petitgrain, Sheer Musk',
-    category: 'floral',
-    categoryName: 'Floral & Solar',
-    price: 4400,
-    burnTime: '55 Hours',
-    weight: '260g / 9.1 oz',
-    badge: 'New',
-    image: 'images/candle-orange.jpg',
-    topNotes: 'Italian Mandora, Petitgrain Citronnier',
-    heartNotes: 'Tunisian Neroli, Orange Blossom Petals',
-    baseNotes: 'Sheer Musks, Honeyed Amber',
-    description: 'Freshly blossomed citrus orchards at daybreak. Crisp green petitgrain unfurls into radiant floral honey, illuminating living rooms with natural optimism.'
-  },
-  {
-    id: 'candle-vanilla',
-    name: 'No. 05 — Bourbon & Vanille',
-    frenchTitle: 'Bourbon & Vanille • Réserve Dorée',
-    scents: 'Aged Bourbon Oak, Madagascar Vanilla Bean, Honey, Tonka',
-    category: 'gourmand',
-    categoryName: 'Warm Gourmand',
-    price: 5000,
-    burnTime: '60 Hours',
-    weight: '290g / 10.2 oz',
-    badge: 'Limited Reserve',
-    image: 'images/candle-vanilla.jpg',
-    topNotes: 'Spiced Dark Rum, Bitter Almond',
-    heartNotes: 'Madagascar Vanilla Absolute, Golden Honey',
-    baseNotes: 'Charred Oak Cask, Venezuelan Tonka',
-    description: 'Not merely sweet—deeply intoxicating. Rich Madagascar bourbon vanilla beans aged in charred oak barrels with hints of spiced molasses and warm resin.'
-  },
-  {
-    id: 'candle-rose',
-    name: 'No. 06 — Rose & Oud Noir',
-    frenchTitle: 'Rose & Oud Noir • Ombre Éternelle',
-    scents: 'Velvet Damask Rose, Dark Cambodian Oud, Labdanum, Birch',
-    category: 'floral',
-    categoryName: 'Floral & Solar',
-    price: 5400,
-    burnTime: '65 Hours',
-    weight: '300g / 10.5 oz',
-    badge: 'Exclusive',
-    image: 'images/candle-rose.jpg',
-    topNotes: 'Taif Rose Petals, Pink Peppercorn',
-    heartNotes: 'Crimson Damask Rose, Frankincense',
-    baseNotes: 'Cambodian Oud, Birch Tar, Labdanum',
-    description: 'A hypnotic dialogue between dark velvety petals and smoldering Eastern woods. Opulent, regal, and cast in our signature smoky amber glass vessel.'
-  },
-  {
     id: 'candle-sage',
-    name: 'No. 07 — Brume de Sauge',
+    name: 'No. 04 — Brume de Sauge',
     frenchTitle: 'Brume de Sauge • Rentrée Botanique',
     scents: 'Wild Clary Sage, Sea Salt Mist, Driftwood, Crisp Cypress',
     category: 'botanical',
@@ -128,7 +61,7 @@ const PRODUCTS = [
     burnTime: '55 Hours',
     weight: '260g / 9.1 oz',
     badge: 'Botanical',
-    image: 'images/candle-sage.jpg',
+    image: 'image/candle-sage.png',
     topNotes: 'Mineral Sea Salt, Clary Sage',
     heartNotes: 'Blue Eucalyptus, Italian Cypress',
     baseNotes: 'Sun-Bleached Driftwood, Velvet Moss',
@@ -136,7 +69,7 @@ const PRODUCTS = [
   },
   {
     id: 'candle-cedar',
-    name: 'No. 08 — Cèdre Blanc',
+    name: 'No. 05 — Cèdre Blanc',
     frenchTitle: 'Cèdre Blanc • Forêt Silencieuse',
     scents: 'Atlas Mountain Cedar, White Pine, Juniper Berry, Frankincense',
     category: 'woody',
@@ -145,7 +78,7 @@ const PRODUCTS = [
     burnTime: '60 Hours',
     weight: '280g / 9.8 oz',
     badge: 'Winter Atelier',
-    image: 'images/candle-cedar.jpg',
+    image: 'image/candle-cedar.png',
     topNotes: 'Wild Juniper Berry, Frosted Mint',
     heartNotes: 'Atlas Cedarwood, White Pine Needle',
     baseNotes: 'Sacred Frankincense, Dry Moss',
